@@ -6,6 +6,7 @@ import HomeScreen from "./src/screens/Home";
 import { posts } from "./assets/data/feed";
 import SearchResult from "./src/screens/SearchResults";
 import DestinationSearchScreen from "./src/screens/DestinationSearch";
+import GuestsScreen from "./src/screens/Guests";
 
 const post1 = posts[2]
 
@@ -16,7 +17,8 @@ export default function App() {
       {/* <HomeScreen/>
       <Post post={post1}/>
       <SearchResult/> */}
-      <DestinationSearchScreen />
+      {/* <DestinationSearchScreen /> */}
+      <GuestsScreen/>
     </View>
   );
 }
