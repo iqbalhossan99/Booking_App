@@ -3,10 +3,10 @@ import { View } from "react-native";
 import Post from "./src/components/Posts";
 import HomeScreen from "./src/screens/Home";
 
-import feed from "./assets/data/feed";
-import { PostType } from "./types";
+import { posts } from "./assets/data/feed";
+import SearchResult from "./src/screens/SearchResults";
 
-const post1 = feed[2]
+const post1 = posts[2]
 
 export default function App() {
   return (
@@ -14,6 +14,7 @@ export default function App() {
       <StatusBar style="auto" />
       <HomeScreen/>
       <Post post={post1}/>
+      <SearchResult/>
     </View>
   );
 }
