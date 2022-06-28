@@ -1,11 +1,13 @@
 import React from 'react';
-import {View, ImageBackground, Text, Pressable, FlatList, } from 'react-native';
+import {View, ImageBackground, Text, Pressable, FlatList, useWindowDimensions, } from 'react-native';
 import styles from './styles';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { posts } from '../../../assets/data/feed';
+import PostCarouselItem from '../../components/PostCarouselItem'
 
 const HomeScreen = () => {
 
+  const width= useWindowDimensions().width;
   return (
     <View>
       <Pressable
@@ -27,20 +29,17 @@ const HomeScreen = () => {
       </ImageBackground>
 
       {/* post carousel */}
-      {/* <View style={{position: 'absolute', bottom: 10}}>
+      <View style={{paddingTop: 50}}>
         <FlatList
-          ref={flatlist}
           data={posts}
           renderItem={({item}) => <PostCarouselItem post={item} />}
           horizontal
           showsHorizontalScrollIndicator={false}
           snapToInterval={width - 60}
-          snapToAlignment={"center"}
+          snapToAlignment={'center'}
           decelerationRate={"fast"}
-          viewabilityConfig={viewConfig.current}
-          onViewableItemsChanged={onViewChanged.current}
         />
-      </View> */}
+      </View>
     </View>
   );
 };
