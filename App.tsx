@@ -5,6 +5,7 @@ import HomeScreen from "./src/screens/Home";
 
 import { posts } from "./assets/data/feed";
 import SearchResult from "./src/screens/SearchResults";
+import PostCarouselItem from "./src/components/PostCarouselItem";
 import DestinationSearchScreen from "./src/screens/DestinationSearch";
 import GuestsScreen from "./src/screens/Guests";
 
@@ -17,6 +18,7 @@ export default function App() {
       {/* <HomeScreen/>
       <Post post={post1}/>
       <SearchResult/> */}
+      <PostCarouselItem post={post1}/> 
       <DestinationSearchScreen />
       {/* <GuestsScreen/> */}
     </View>

@@ -1,7 +1,7 @@
 import { Entypo } from '@expo/vector-icons';
 import React, { useState } from 'react';
 import { View, TextInput, FlatList, Text } from 'react-native';
-import { GooglePlaceData, GooglePlaceDetail, GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
+// import { GooglePlaceData, GooglePlaceDetail, GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { destination } from '../../../assets/data/search';
 import styles from "./styles"
 
