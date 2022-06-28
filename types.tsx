@@ -14,3 +14,8 @@ export type PostType = {
       longitude: number,
     },
   };
+
+  export type DestinationType = {
+    id: string,
+    description:string
+    }

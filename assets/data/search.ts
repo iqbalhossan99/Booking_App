@@ -1,4 +1,6 @@
-export default [
+import { DestinationType } from "../../types";
+
+export const destination:DestinationType[] = [
   {
     id: '0',
     description: 'Tenerife, Canary Islands',

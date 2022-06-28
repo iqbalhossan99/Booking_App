@@ -5,6 +5,7 @@ import Post from "../../components/Posts";
 
 const SearchResult = () => {
   return <View>
+    {/* Display all posts */}
     <FlatList
       data={posts}
       renderItem={({item}) => <Post post={item} />}
