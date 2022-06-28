@@ -1,6 +1,7 @@
 import { Entypo } from '@expo/vector-icons';
 import React, { useState } from 'react';
 import { View, TextInput, FlatList, Text } from 'react-native';
+import { GooglePlaceData, GooglePlaceDetail, GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { destination } from '../../../assets/data/search';
 import styles from "./styles"
 
@@ -15,6 +16,24 @@ const DestinationSearchScreen = () => {
                 value={inputText}
                 onChangeText={setInputText}
             />
+
+            {/* <View style={{height:500}}>
+                <GooglePlacesAutocomplete
+                    placeholder='Where are you going?'
+                    onPress={(data : GooglePlaceData, details : GooglePlaceDetail | null = null) =>{
+                        console.log(data, details)
+                    }}
+                    
+                    styles={{
+                    textInput: styles.textInput,
+                    }}
+                    query={{
+                    key: 'AIzaSyBxab04yEFzRyZkuiW624nCk5nN9QXUivI',
+                    language: 'en',
+                }}
+           
+                />
+            </View> */}
 
             {/* List of destination */}
             <FlatList

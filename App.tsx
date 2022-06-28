@@ -17,8 +17,8 @@ export default function App() {
       {/* <HomeScreen/>
       <Post post={post1}/>
       <SearchResult/> */}
-      {/* <DestinationSearchScreen /> */}
-      <GuestsScreen/>
+      <DestinationSearchScreen />
+      {/* <GuestsScreen/> */}
     </View>
   );
 }
