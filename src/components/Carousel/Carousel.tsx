@@ -55,7 +55,6 @@ const Carousel = ({images})=>{
                     ))}
                 </View>
             </View>
-            <Button title="Move" onPress={handleAnimation}/>
         </React.Fragment>
     )
 }
@@ -94,3 +93,6 @@ const styles = StyleSheet.create({
 })
 
 export default Carousel
+
+
+
