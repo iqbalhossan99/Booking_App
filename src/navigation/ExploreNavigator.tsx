@@ -11,7 +11,7 @@ const ExploreNavigator = () => {
             <Stack.Screen name='Welcome' component={HomeScreen} options={{
                 headerShown: false,
             }} />
-             <Stack.Screen name={'SearchResults'} component={SearchResult}
+            <Stack.Screen name={'SearchResults'} component={SearchResult}
                 options={{
                 title: 'Search your destination',
             }}

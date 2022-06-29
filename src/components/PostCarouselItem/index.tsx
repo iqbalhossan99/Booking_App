@@ -1,3 +1,4 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { View, Text, Image, useWindowDimensions, Pressable } from "react-native";
 import { PostType } from '../../../types';
@@ -22,37 +23,42 @@ const Post: React.FC<{post:PostType}>=
             },
         }
       }) => {
-  
 
-  return (
-    <Pressable style={[styles.container]}>
-      <View style={styles.innerContainer}>
-        {/* Image  */}
-        <Image
-          style={styles.image}
-          source={{uri: image}}
-        />
+        const navigation = useNavigation();
+        
+        const goToPostDetails =()=>{
+          navigation.navigate('Post', {postId: id})
+        }
 
-        <View style={{flex: 1, marginHorizontal: 10}}>
-          {/* Bed & Bedroom  */}
-          <Text style={styles.bedrooms}>
-            {bed} bed {bedroom} bedroom
-          </Text>
+      return (
+        <Pressable onPress={goToPostDetails} style={[styles.container]}>
+          <View style={styles.innerContainer}>
+            {/* Image  */}
+            <Image
+              style={styles.image}
+              source={{uri: image}}
+            />
 
-          {/* Type & Description */}
-          <Text style={styles.description} numberOfLines={2}>
-            {type}. {title}
-          </Text>
+            <View style={{flex: 1, marginHorizontal: 10}}>
+              {/* Bed & Bedroom  */}
+              <Text style={styles.bedrooms}>
+                {bed} bed {bedroom} bedroom
+              </Text>
 
-          {/*  Old price & new price */}
-          <Text style={styles.prices}>
-            <Text style={styles.price}>${newPrice} </Text>
-            / night
-          </Text>
-        </View>
-      </View>
-    </Pressable>
-  );
+              {/* Type & Description */}
+              <Text style={styles.description} numberOfLines={2}>
+                {type}. {title}
+              </Text>
+
+              {/*  Old price & new price */}
+              <Text style={styles.prices}>
+                <Text style={styles.price}>${newPrice} </Text>
+                / night
+              </Text>
+            </View>
+          </View>
+        </Pressable>
+      );
 };
 
 export default Post;

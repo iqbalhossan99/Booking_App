@@ -5,6 +5,7 @@ import DestinationSearchScreen from '../screens/DestinationSearch';
 import HomeTabNavigator from './HomeRabNavigator';
 import GuestsScreen from '../screens/Guests';
 import Post from '../components/Posts';
+import PostScreen from '../screens/PostScreen';
 
 
 
@@ -32,9 +33,16 @@ const Router = () => {
                 }}
                 />
 
-                <Stack.Screen
+                {/* <Stack.Screen
                 name={"Post"}
                 component={Post}
+                options={{
+                    title: "Accommodation"
+                }}
+                /> */}
+                <Stack.Screen
+                name={"Post"}
+                component={PostScreen}
                 options={{
                     title: "Accommodation"
                 }}

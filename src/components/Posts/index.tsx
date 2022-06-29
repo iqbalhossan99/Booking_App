@@ -1,9 +1,9 @@
+import { useNavigation } from '@react-navigation/native';
 import React from 'react';
 import { Text, Image, Pressable} from 'react-native';
 import { PostType } from '../../../types';
 import styles from './styles';
 
-const days = 7;
 
   
 const Post: React.FC<{post:PostType}>=
@@ -26,10 +26,17 @@ const Post: React.FC<{post:PostType}>=
         }
       }) => {
 
+    const days = 7;
+    
+    const navigation = useNavigation();
+    const goToPostDetails = ()=>{
+      navigation.navigate ('Post',{postId: id})
+    }
+
  
 
   return (
-    <Pressable style={styles.container}>
+    <Pressable onPress={()=> goToPostDetails()} style={styles.container}>
       {/* Image  */}
       <Image
         style={styles.image}

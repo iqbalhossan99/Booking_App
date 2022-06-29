@@ -4,16 +4,21 @@ import HomeScreen from '../screens/Home';
 
 import { AntDesign, FontAwesome, FontAwesome5, MaterialIcons } from '@expo/vector-icons';
 import ExploreNavigator from './ExploreNavigator';
+import PostScreen from '../screens/PostScreen';
 
-const Tab = createBottomTabNavigator();
 
 const HomeTabNavigator = () => {
+
+    const Tab = createBottomTabNavigator();
+
     return (
         <Tab.Navigator
         tabBarOptions ={{
         activeTintColor : '#f15454',
         }}>
-          <Tab.Screen name="Explore" component={ExploreNavigator} 
+          <Tab.Screen name="Explore" 
+          component={ExploreNavigator} 
+          // component={PostScreen} 
             options={{
                 tabBarIcon: ({color}) =>(
                     <FontAwesome name="search" size={24} color={color} />
