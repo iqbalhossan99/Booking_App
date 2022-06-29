@@ -3,17 +3,17 @@ import { createBottomTabNavigator } from '@react-navigation/bottom-tabs';
 import HomeScreen from '../screens/Home';
 
 import { AntDesign, FontAwesome, FontAwesome5, MaterialIcons } from '@expo/vector-icons';
-
+import ExploreNavigator from './ExploreNavigator';
 
 const Tab = createBottomTabNavigator();
 
 const HomeTabNavigator = () => {
     return (
         <Tab.Navigator
-        tabBarOptions={{
-        activeTintColor: '#f15454',
+        tabBarOptions ={{
+        activeTintColor : '#f15454',
         }}>
-          <Tab.Screen name="Explore" component={HomeScreen} 
+          <Tab.Screen name="Explore" component={ExploreNavigator} 
             options={{
                 tabBarIcon: ({color}) =>(
                     <FontAwesome name="search" size={24} color={color} />

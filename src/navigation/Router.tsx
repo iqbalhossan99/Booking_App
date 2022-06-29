@@ -19,7 +19,7 @@ const Router = () => {
                     headerShown: false,
                 }}
               />
-              <Stack.Screen name="Destination" component={DestinationSearchScreen} 
+              <Stack.Screen name="Destination Search" component={DestinationSearchScreen} 
                 options={{
                     title:"Search your destination"
                 }}

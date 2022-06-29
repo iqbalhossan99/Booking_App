@@ -1,11 +1,13 @@
 import { Entypo } from '@expo/vector-icons';
+import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
-import { View, TextInput, FlatList, Text } from 'react-native';
+import { View, TextInput, FlatList, Text, Pressable } from 'react-native';
 // import { GooglePlaceData, GooglePlaceDetail, GooglePlacesAutocomplete } from 'react-native-google-places-autocomplete';
 import { destination } from '../../../assets/data/search';
 import styles from "./styles"
 
 const DestinationSearchScreen = () => {
+    const navigation = useNavigation();
     const [inputText, setInputText] = useState('')
     return (
         <View style={styles.container}>
@@ -39,12 +41,12 @@ const DestinationSearchScreen = () => {
             <FlatList
                 data={destination}
                 renderItem={({item}) =>(
-                    <View style={styles.row}>
+                    <Pressable onPress={()=> navigation.navigate('Guests')} style={styles.row}>
                         <View style={styles.iconContainer}>
                             <Entypo name="location-pin" size={35} />
                         </View>
                         <Text>{item.description}</Text>
-                    </View>
+                    </Pressable>
                 )}
             />
         </View>

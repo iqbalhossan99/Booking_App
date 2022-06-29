@@ -17,7 +17,16 @@ const styles = StyleSheet.create({
         marginHorizontal: 20,
         borderBottomWidth: 1,
         borderColor: 'lightgrey',
-      }
+      },
+      searchBtn:{
+        marginBottom: 20,
+        backgroundColor: '#f15454',
+        alignItems: 'center',
+        justifyContent: 'center',
+        height: 50,
+        marginHorizontal: 20,
+        borderRadius: 10,
+        }
 })
 
 export default styles;

@@ -4,14 +4,18 @@ import styles from './styles';
 import Ionicons from '@expo/vector-icons/Ionicons';
 import { posts } from '../../../assets/data/feed';
 import PostCarouselItem from '../../components/PostCarouselItem'
+import { useNavigation } from '@react-navigation/native';
 
 const HomeScreen = () => {
 
+  const navigation = useNavigation();
   const width= useWindowDimensions().width;
+
   return (
     <View>
       <Pressable
-        style={styles.searchButton}>
+        style={styles.searchButton}
+        onPress={()=>{ navigation.navigate('Destination Search')}}                                   >
       <Ionicons name="search" size={25} color={'#f15454'}  />
       <Text style={styles.searchButtonText}>Where are you going?</Text>
       </Pressable>
