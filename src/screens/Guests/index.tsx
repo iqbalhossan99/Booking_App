@@ -3,6 +3,8 @@ import { Pressable, Text, View } from 'react-native';
 import { useNavigation } from '@react-navigation/native';
 import styles from './styles';
 
+
+
 const GuestsScreen = () => {
     const [adults, setAdults] = useState(0);
     const [children, setChildren] = useState(0);

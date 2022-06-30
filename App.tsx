@@ -16,12 +16,7 @@ import Router from "./src/navigation/Router";
 
 const post1 = posts[2]
 
-const images = [
-  "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/images/2.jpg",
-  "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/images/3.jpg",
-  "https://notjustdev-dummy.s3.us-east-2.amazonaws.com/images/4.jpg",
-    
-];
+
 
 export default function App() {
   return (

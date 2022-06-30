@@ -2,7 +2,7 @@ import React from 'react';
 import {View, Text, Image, ScrollView,} from 'react-native';
 import styles from './styles';
 
-const PostDetails = (props) => {
+const PostDetails = (props:any) => {
 
   const post = props.post;
 

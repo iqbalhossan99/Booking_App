@@ -1,12 +1,10 @@
 import React, { useRef, useState } from "react";
-import { Animated, Button, Dimensions, Image, StyleSheet, View } from "react-native";
+import { Animated, Button, Dimensions, Image, View } from "react-native";
 import useInterval from "./useInterval";
+import styles from "./styles"
 
-type Props ={
-    images: string[];
-}
 
-const MAX_WIDTH = Dimensions.get('screen').width;
+
 
 const Carousel = ({images})=>{
     const animation = useRef(new Animated.Value(0));
@@ -37,14 +35,14 @@ const Carousel = ({images})=>{
               transform: [{translateX: animation.current}],
             },]}>
                     {
-                        images.map((image, i) =>(
+                        images.map((image:string, i:number) =>(
                             <Image key={i} source={{uri: image}} style={styles.image} />
                             ))
                         }   
                 </Animated.View>
                 {/* Indicator */}
                 <View style={styles.indicatorContainer}>
-                    {images.map((image, index) => (
+                    {images.map((image:string, index:number) => (
                         <View
                         key={`${image}_${index}`}
                         style={[
@@ -59,38 +57,6 @@ const Carousel = ({images})=>{
     )
 }
 
-const styles = StyleSheet.create({
-    image: {
-        marginTop:50,
-        resizeMode: 'cover',
-        height: 500,
-        width: MAX_WIDTH,
-      },
-      container: {
-        flexDirection: 'row',
-      },
-      indicatorContainer: {
-        position: 'absolute',
-        flexDirection: 'row',
-        justifyContent: 'center',
-        alignItems: 'center',
-        width: MAX_WIDTH,
-        bottom: 10,
-        zIndex: 2,
-      },
-      indicator: {
-        width: 15,
-        height: 15,
-        borderRadius: 7.5,
-        borderColor: 'white',
-        borderWidth: 1,
-        marginHorizontal: 10,
-        marginBottom: 10,
-      },
-      activeIndicator: {
-        backgroundColor: 'white',
-      },
-})
 
 export default Carousel
 

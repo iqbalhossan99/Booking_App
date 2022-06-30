@@ -19,3 +19,4 @@ export type PostType = {
     id: string,
     description:string
     }
+  

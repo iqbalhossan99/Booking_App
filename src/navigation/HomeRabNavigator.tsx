@@ -5,11 +5,14 @@ import HomeScreen from '../screens/Home';
 import { AntDesign, FontAwesome, FontAwesome5, MaterialIcons } from '@expo/vector-icons';
 import ExploreNavigator from './ExploreNavigator';
 import PostScreen from '../screens/PostScreen';
+import LoginRegister from '../components/LoginRegister';
+import { useNavigation } from '@react-navigation/native';
 
 
 const HomeTabNavigator = () => {
 
     const Tab = createBottomTabNavigator();
+    const navigation = useNavigation();
 
     return (
         <Tab.Navigator
@@ -19,6 +22,7 @@ const HomeTabNavigator = () => {
           <Tab.Screen name="Explore" 
           component={ExploreNavigator} 
           // component={PostScreen} 
+        //   component={Login} 
             options={{
                 tabBarIcon: ({color}) =>(
                     <FontAwesome name="search" size={24} color={color} />
@@ -47,10 +51,11 @@ const HomeTabNavigator = () => {
                 )
             }}
           />
-          <Tab.Screen name="User" component={HomeScreen} 
+          <Tab.Screen name="User" component={LoginRegister} 
             options={{
                 tabBarIcon: ({color}) =>(
-                    <AntDesign name="user" size={24}  color={color}  />
+                    <AntDesign  
+                    name="user" size={24}  color={color}  />
                 )
             }}
           />

@@ -6,6 +6,7 @@ import HomeTabNavigator from './HomeRabNavigator';
 import GuestsScreen from '../screens/Guests';
 import Post from '../components/Posts';
 import PostScreen from '../screens/PostScreen';
+import LoginRegister from '../components/LoginRegister';
 
 
 
@@ -45,6 +46,13 @@ const Router = () => {
                 component={PostScreen}
                 options={{
                     title: "Accommodation"
+                }}
+                />
+                <Stack.Screen
+                name={"LoginRegister"}
+                component={LoginRegister}
+                options={{
+                    title: "Log In"
                 }}
                 />
             </Stack.Navigator>
