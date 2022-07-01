@@ -9,12 +9,17 @@ import PostScreen from '../screens/PostScreen';
 import LoginRegister from '../components/LoginRegister';
 
 
+const navigationRef = React.createRef();
+export const navigate = (name, params) =>{
+    navigationRef.current && navigationRef.current.navigate(name, params);
+}
 
 const Stack = createNativeStackNavigator();
 
+
 const Router = () => {
     return (
-        <NavigationContainer>
+        <NavigationContainer ref={navigationRef}>
             <Stack.Navigator>
               <Stack.Screen name="Home" component={HomeTabNavigator}
                 options={{

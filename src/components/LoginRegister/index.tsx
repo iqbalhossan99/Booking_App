@@ -1,7 +1,9 @@
 import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { Alert, Pressable, Text, TextInput, View } from 'react-native';
- import styles from './styles';
+import {trySignUp} from '../../redux/actionCreators'
+import { connect } from 'react-redux';
+import styles from './styles';
 
 type Inputs= {
     email:string,
@@ -9,7 +11,22 @@ type Inputs= {
     confirmPassword:string,
 }
 
-const LoginRegister = () => {
+const mapStateToProps = state =>{
+    return{
+        isAuth: state.isAuth
+    }
+}
+
+
+const mapDispatchToProps = dispatch =>{
+    return{
+        trySignUp: (email, password) => dispatch(trySignUp(email, password))
+    }
+}
+
+const LoginRegister = (props) => {
+    // console.log(props.isAuth);
+
     const [authStates, setAuthStates] = useState({
         mode:"login",
         inputs:{
@@ -26,7 +43,7 @@ const LoginRegister = () => {
         })
     }
 
-    const updateInputs = (value, name) =>{
+    const updateInputs = (value:string, name:string) =>{
         setAuthStates({
             ...authStates,
             inputs:{
@@ -49,23 +66,36 @@ const LoginRegister = () => {
         if(email !== '' && password !== ""){
             if(emailReg.test(email)){
                 if(authStates.mode === "login"){
-                    // if user login then navigate the home page
-                    navigation.navigate("Home")
-                    console.log(email, password, confirmPassword);
-
+                    //  login 
+                    if(props.isAuth){
+                        navigation.navigate("Welcome")
+                        console.log("You are Log in now!");    
+                    }else{
+                        Alert.alert("You are not allowed!")
+                    }
+                    
                 }else{
-                    // IF password and confirm password match then navigate the home page
+                    // Sign up
                     if(password === confirmPassword){
-                      navigation.navigate("Home")
+                        props.trySignUp(email, password)
+                        // if(props.isAuth){
+                        //     navigation.navigate("Welcome")
+                        //     console.log("You are Sign in now"); 
+                        //     Alert.alert("You are not allowed");
+                        // }else{
+                        //     Alert.alert("You are not allowed");
+                        //     console.log("You are Sign in now"); 
+                        // }
                     }else{
                         Alert.alert("Password fields doesn't match!")
+
                     }
                 }
             }else{
                 Alert.alert("Invalid Email")
-                              }
+            }
         }else{
-            Alert.alert("Input all the filds!")
+            Alert.alert("Input all the filds! fduhjdsifjdsof")
         }
     }
 
@@ -104,12 +134,11 @@ const LoginRegister = () => {
             onPress={()=>{handleAuth()}}
             style={styles.btnContainer}>
                 <Text style={styles.btnText}>{authStates.mode === "login"? "Login" : "Sing Up"}</Text>
-            </Pressable>
-         
-            
+            </Pressable>         
         </View>
     );
 };
 
 
-export default LoginRegister;
+export default connect(mapStateToProps, mapDispatchToProps)(LoginRegister); // first parameter should be null because there in't any state
+
