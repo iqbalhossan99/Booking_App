@@ -4,11 +4,10 @@ import { useNavigation } from '@react-navigation/native';
 import styles from './styles';
 
 
-
 const GuestsScreen = () => {
-    const [adults, setAdults] = useState(0);
-    const [children, setChildren] = useState(0);
-    const [infants, setInfants] = useState(0);
+    const [adults, setAdults] = useState<number>(0);
+    const [children, setChildren] = useState<number>(0);
+    const [infants, setInfants] = useState<number>(0);
 
     const navigation = useNavigation();
 

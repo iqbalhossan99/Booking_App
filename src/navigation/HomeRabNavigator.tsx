@@ -4,10 +4,12 @@ import HomeScreen from '../screens/Home';
 
 import { AntDesign, FontAwesome, FontAwesome5, MaterialIcons } from '@expo/vector-icons';
 import ExploreNavigator from './ExploreNavigator';
-import PostScreen from '../screens/PostScreen';
 import LoginRegister from '../components/LoginRegister';
 import { useNavigation } from '@react-navigation/native';
 
+type ActiveTintColor={
+    activeTintColor:string
+}
 
 const HomeTabNavigator = () => {
 
@@ -16,8 +18,8 @@ const HomeTabNavigator = () => {
 
     return (
         <Tab.Navigator
-        tabBarOptions ={{
-        activeTintColor : '#f15454',
+        screenOptions ={{
+        tabBarActiveTintColor : '#f15454',
         }}>
           <Tab.Screen name="Explore" 
           component={ExploreNavigator} 

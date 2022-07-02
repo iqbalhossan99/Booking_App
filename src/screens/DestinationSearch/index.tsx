@@ -30,7 +30,7 @@ const DestinationSearchScreen = () => {
                     textInput: styles.textInput,
                     }}
                     query={{
-                    key: 'AIzaSyBxab04yEFzRyZkuiW624nCk5nN9QXUivI',
+                    key: '--------There should be your map api---------',
                     language: 'en',
                 }}
            

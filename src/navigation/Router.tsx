@@ -8,10 +8,15 @@ import Post from '../components/Posts';
 import PostScreen from '../screens/PostScreen';
 import LoginRegister from '../components/LoginRegister';
 
+type Props ={
+    name: string
+}
 
-const navigationRef = React.createRef();
-export const navigate = (name, params) =>{
-    navigationRef.current && navigationRef.current.navigate(name, params);
+const navigationRef = React.createRef<HTMLDivElement>();
+
+
+export const navigate = ({name}:Props) =>{
+    navigationRef.current && navigationRef.current.navigate(name);
 }
 
 const Stack = createNativeStackNavigator();

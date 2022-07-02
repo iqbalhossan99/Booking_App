@@ -5,7 +5,7 @@ const initState = {
     isAuth: false,
 }
 
-export const rootReducer = (state = initState, action) =>{
+export const rootReducer = (state = initState, action:any) =>{
     switch(action.type){
         case actionTypes.AUTHENTICATE_USER:
         return{

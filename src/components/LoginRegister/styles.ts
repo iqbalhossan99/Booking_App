@@ -20,7 +20,7 @@ const styles = StyleSheet.create({
     btnContainer:{
         flexDirection: "row",
         width: 150,
-        paddingVertical: 5,
+        padding: 7,
         backgroundColor:"#f15454",
         borderRadius:5,
         marginTop: 10,

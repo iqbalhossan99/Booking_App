@@ -1,7 +1,6 @@
-import { useNavigation } from '@react-navigation/native';
 import React, { useState } from 'react';
 import { Alert, Pressable, Text, TextInput, View } from 'react-native';
-import {trySignUp} from '../../redux/actionCreators'
+import {tryAuth} from '../../redux/actionCreators'
 import { connect } from 'react-redux';
 import styles from './styles';
 
@@ -11,20 +10,19 @@ type Inputs= {
     confirmPassword:string,
 }
 
-const mapStateToProps = state =>{
+const mapStateToProps = (state:any) =>{
     return{
         isAuth: state.isAuth
     }
 }
 
-
-const mapDispatchToProps = dispatch =>{
+const mapDispatchToProps = (dispatch:any) =>{
     return{
-        trySignUp: (email, password) => dispatch(trySignUp(email, password))
+        tryAuth: (email:string, password:string, mode:string) => dispatch(tryAuth(email, password, mode))
     }
 }
 
-const LoginRegister = (props) => {
+const LoginRegister = (props:any) => {
     // console.log(props.isAuth);
 
     const [authStates, setAuthStates] = useState({
@@ -55,40 +53,22 @@ const LoginRegister = (props) => {
 
     const emailReg = /^\S+@\S+\.\S+$/;
 
-    const navigation = useNavigation();
-
     const handleAuth =()=>{
         const email = authStates.inputs.email;
         const password = authStates.inputs.password;
         const confirmPassword = authStates.inputs.confirmPassword;
-        // console.log(email, password, confirmPassword);
 
         if(email !== '' && password !== ""){
             if(emailReg.test(email)){
                 if(authStates.mode === "login"){
                     //  login 
-                    if(props.isAuth){
-                        navigation.navigate("Welcome")
-                        console.log("You are Log in now!");    
-                    }else{
-                        Alert.alert("You are not allowed!")
-                    }
-                    
+                    props.tryAuth(email, password, "login")                  
                 }else{
                     // Sign up
                     if(password === confirmPassword){
-                        props.trySignUp(email, password)
-                        // if(props.isAuth){
-                        //     navigation.navigate("Welcome")
-                        //     console.log("You are Sign in now"); 
-                        //     Alert.alert("You are not allowed");
-                        // }else{
-                        //     Alert.alert("You are not allowed");
-                        //     console.log("You are Sign in now"); 
-                        // }
+                        props.tryAuth(email, password, "signup")
                     }else{
                         Alert.alert("Password fields doesn't match!")
-
                     }
                 }
             }else{
@@ -110,9 +90,11 @@ const LoginRegister = (props) => {
             />
         )
     }
+
+    
     return (
         <View style={styles.loginView}>
-            <Pressable onPress={()=> switchViews()} style={{ backgroundColor:"#f15454", width: "80%"}}>
+            <Pressable onPress={()=> switchViews()} style={{ ...styles.btnContainer, backgroundColor:"#f15454", width: "80%"}}>
                 <Text style={styles.btnText}>{authStates.mode === "login"? "Switch to Sing Up" : "Switch to Log In"}</Text>
             </Pressable>
             <TextInput 
@@ -135,10 +117,11 @@ const LoginRegister = (props) => {
             style={styles.btnContainer}>
                 <Text style={styles.btnText}>{authStates.mode === "login"? "Login" : "Sing Up"}</Text>
             </Pressable>         
+                   
         </View>
     );
 };
 
 
-export default connect(mapStateToProps, mapDispatchToProps)(LoginRegister); // first parameter should be null because there in't any state
+export default connect(mapStateToProps, mapDispatchToProps)(LoginRegister); // first parameter should be null if there in't any state
 

@@ -371,3 +371,6 @@ def isNewArchitectureEnabled() {
 // firebase google-services
 apply plugin: 'com.android.application'
 apply plugin: 'com.google.gms.google-services'
+
+// react-native-vector-icons
+apply from: "../../node_modules/react-native-vector-icons/fonts.gradle"

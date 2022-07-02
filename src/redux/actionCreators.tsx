@@ -1,7 +1,12 @@
-import { useNavigation } from '@react-navigation/native';
 import { Alert } from 'react-native';
 import { navigate } from '../navigation/Router';
 import * as actionTypes from './actionTypes'
+
+type AuthProps = {
+    email: string,
+    password: string,
+    mode: string
+}
 
 export const authUser = () =>{
     return {
@@ -9,9 +14,17 @@ export const authUser = () =>{
     }
 }
 
-export const trySignUp = (email:string ,password:string)=> dispatch =>{
-    
-    fetch('https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=AIzaSyAggPQZvDcZ-PTQ03hUtjIosJYEsaSW1S8',
+export const tryAuth = ({email, password, mode}:AuthProps)=> (dispatch:Function) =>{
+
+    let url = "";
+    const API_KEY = `AIzaSyAggPQZvDcZ-PTQ03hUtjIosJYEsaSW1S8`
+    if(mode == "signup"){
+        url = `https://identitytoolkit.googleapis.com/v1/accounts:signUp?key=${API_KEY}`
+    }else if(mode == "login"){
+        url = `https://identitytoolkit.googleapis.com/v1/accounts:signInWithPassword?key=${API_KEY}`
+    }
+
+    fetch( url,
     {
        method: "POST",
        body: JSON.stringify({
@@ -27,16 +40,14 @@ export const trySignUp = (email:string ,password:string)=> dispatch =>{
     .then(data =>{
         if(data.error){
             Alert.alert(data.error.message);
-            console.log(data.error.message);
         }else{
-            navigate('Welcome');
             dispatch(authUser());
-            console.log("You are Sign in now");
+            navigate('Welcome');
             
         }
     })
     .catch(err =>{
-        console.log(err); // Server error
+        console.log(err); 
         Alert.alert("Authentication Fail");
     })
     

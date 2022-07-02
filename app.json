@@ -19,6 +19,7 @@
     ],
     "ios": {
       "supportsTablet": true
+
     },
     "android": {
       "adaptiveIcon": {
@@ -26,9 +27,11 @@
         "backgroundColor": "#FFFFFF"
       },
       "package": "io.bookingapp.client"
+
     },
     "web": {
       "favicon": "./assets/favicon.png"
     }
+   
   }
 }
